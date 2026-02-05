@@ -1,162 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Saudi Arabia Tourism</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Saudi Arabia Tourism</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    <style>
-        body {
-            font-family: Arial
-        }
-        
-        .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: 1s
-        }
-        
-        .slide.active {
-            opacity: 1
-        }
-        
-        .card img {
-            transition: .4s
-        }
-        
-        .card:hover img {
-            transform: scale(1.08)
-        }
-    </style>
+<style>
+body{font-family:Arial}
+.slide{position:absolute;inset:0;opacity:0;transition:1s}
+.slide.active{opacity:1}
+.card img{transition:.4s}
+.card:hover img{transform:scale(1.08)}
+</style>
 </head>
 
 <body class="bg-[#3b2f2f] text-white">
 
-    <!-- HEADER -->
-    <header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
-            <nav class="space-x-6 font-semibold text-black">
-                <a href="#home">Home</a>
-                <a href="#cities">Destinations</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
+<nav class="space-x-6 text-black font-semibold">
+<a href="#home">Home</a>
+<a href="#cities">Destinations</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
 
-    <div class="h-20"></div>
+<div class="h-20"></div>
 
-    <!-- SLIDER (صور روابط) -->
-    <section id="home" class="relative h-[70vh] overflow-hidden">
-        <a href="jeddah.html"><img src="jeddah.jpg" class="slide active object-cover w-full h-full"></a>
-        <a href="alula.html"><img src="Aloula.jpg" class="slide object-cover w-full h-full"></a>
-        <a href="riyadh.html"><img src="riyad.jpg" class="slide object-cover w-full h-full"></a>
-        <a href="taif.html"><img src="taif.jpg" class="slide object-cover w-full h-full"></a>
-        <a href="tabuk.html"><img src="Tabuk.jpg" class="slide object-cover w-full h-full"></a>
-        <a href="madinah.html"><img src="madina.jpg" class="slide object-cover w-full h-full"></a>
+<!-- SLIDER -->
+<section id="home" class="relative h-[70vh] overflow-hidden">
+<a href="jeddah.html"><img src="jeddah.jpg" class="slide active w-full h-full object-cover"></a>
+<a href="alula.html"><img src="Aloula.jpg" class="slide w-full h-full object-cover"></a>
+<a href="riyadh.html"><img src="riyad.jpg" class="slide w-full h-full object-cover"></a>
+<a href="taif.html"><img src="taif.jpg" class="slide w-full h-full object-cover"></a>
+<a href="tabuk.html"><img src="Tabuk.jpg" class="slide w-full h-full object-cover"></a>
+<a href="madinah.html"><img src="madina.jpg" class="slide w-full h-full object-cover"></a>
 
-        <div class="absolute inset-0 bg-black/50 flex items-center justify-center pointer-events-none">
-            <h2 class="text-4xl font-bold text-[#d4af37]">Explore Saudi Arabia</h2>
-        </div>
-    </section>
+<!-- overlay (لا يمنع الضغط) -->
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center pointer-events-none">
+<h2 class="text-4xl font-bold text-[#d4af37] text-center">Explore Saudi Arabia</h2>
+</div>
+</section>
 
-    <!-- CITIES -->
-    <section id="cities" class="max-w-7xl mx-auto py-16 px-6">
-        <h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
-            Top Tourist Cities
-        </h2>
+<!-- CITIES -->
+<section id="cities" class="max-w-7xl mx-auto py-16 px-6">
+<h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
+Top Tourist Cities
+</h2>
 
-        <div class="grid md:grid-cols-3 gap-8">
+<div class="grid md:grid-cols-3 gap-8">
 
-            <a href="jeddah.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
-                <img src="jeddah.jpg" class="h-56 w-full object-cover object-bottom">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold">Jeddah</h3>
-                </div>
-            </a>
+<a href="jeddah.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
+<img src="jeddah.jpg" class="h-56 w-full object-cover object-bottom">
+<div class="p-4"><h3 class="text-xl font-bold">Jeddah</h3></div>
+</a>
 
-            <a href="alula.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
-                <img src="Aloula.jpg" class="h-56 w-full object-cover object-bottom">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold">AlUla</h3>
-                </div>
-            </a>
+<a href="alula.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
+<img src="Aloula.jpg" class="h-56 w-full object-cover object-bottom">
+<div class="p-4"><h3 class="text-xl font-bold">AlUla</h3></div>
+</a>
 
-            <a href="riyadh.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
-                <img src="riyad.jpg" class="h-56 w-full object-cover object-bottom">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold">Riyadh</h3>
-                </div>
-            </a>
+<a href="riyadh.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
+<img src="riyad.jpg" class="h-56 w-full object-cover object-bottom">
+<div class="p-4"><h3 class="text-xl font-bold">Riyadh</h3></div>
+</a>
 
-            <a href="taif.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
-                <img src="taif.jpg" class="h-56 w-full object-cover object-bottom">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold">Taif</h3>
-                </div>
-            </a>
+<a href="taif.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
+<img src="taif.jpg" class="h-56 w-full object-cover object-bottom">
+<div class="p-4"><h3 class="text-xl font-bold">Taif</h3></div>
+</a>
 
-            <a href="tabuk.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
-                <img src="Tabuk.jpg" class="h-56 w-full object-cover object-bottom">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold">Tabuk</h3>
-                </div>
-            </a>
+<a href="tabuk.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
+<img src="Tabuk.jpg" class="h-56 w-full object-cover object-bottom">
+<div class="p-4"><h3 class="text-xl font-bold">Tabuk</h3></div>
+</a>
 
-            <a href="madinah.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
-                <img src="madina.jpg" class="h-56 w-full object-cover object-bottom">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold">Madinah</h3>
-                </div>
-            </a>
+<a href="madinah.html" class="card bg-[#4a362a] rounded-xl overflow-hidden">
+<img src="madina.jpg" class="h-56 w-full object-cover object-bottom">
+<div class="p-4"><h3 class="text-xl font-bold">Madinah</h3></div>
+</a>
 
-        </div>
-    </section>
+</div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-16 max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-[#d4af37] mb-8">Contact Us</h2>
+<!-- CONTACT -->
+<section id="contact" class="py-16 max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-[#d4af37] mb-8">Contact Us</h2>
 
-        <form id="contactForm" class="bg-[#4a362a] p-8 rounded-2xl space-y-4">
-            <input id="name" placeholder="Name" class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
-            <textarea id="message" placeholder="Your Message" class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]"></textarea>
-            <button class="w-full bg-[#d4af37] text-black py-3 rounded-xl font-bold">
+<form id="contactForm" class="bg-[#4a362a] p-8 rounded-2xl space-y-4">
+<input id="name" placeholder="Name" class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
+<input id="email" placeholder="Email" class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
+<textarea id="message" placeholder="Your Message" class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]"></textarea>
+<button class="w-full bg-[#d4af37] text-black py-3 rounded-xl font-bold">
 Send via WhatsApp
 </button>
-        </form>
-    </section>
+</form>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#1f1511] py-6 text-center">
-        <p>© 2026 Saudi Tourism</p>
-        <div class="flex justify-center gap-6 mt-4 text-2xl">
-            <a href="https://wa.me/966530356000" class="text-green-500"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="text-[#d4af37]"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-[#d4af37]"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-[#d4af37]"><i class="fab fa-x-twitter"></i></a>
-        </div>
-    </footer>
+<!-- FOOTER -->
+<footer class="bg-[#1f1511] py-6 text-center">
+<p>© 2026 Saudi Tourism</p>
+<div class="flex justify-center gap-6 mt-4 text-2xl">
+<a href="https://wa.me/966530356000" class="text-green-500"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-facebook"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-instagram"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-x-twitter"></i></a>
+</div>
+</footer>
 
-    <script>
-        let slides = document.querySelectorAll('.slide'),
-            i = 0;
-        setInterval(() => {
-            slides[i].classList.remove('active');
-            i = (i + 1) % slides.length;
-            slides[i].classList.add('active');
-        }, 4000);
+<script>
+let slides=document.querySelectorAll('.slide'),i=0;
+setInterval(()=>{
+slides[i].classList.remove('active');
+i=(i+1)%slides.length;
+slides[i].classList.add('active');
+},4000);
 
-        contactForm.onsubmit = e => {
-            e.preventDefault();
-            window.open(`https://wa.me/966530356000?text=Name:${name.value}%0AMessage:${message.value}`);
-        };
-    </script>
+contactForm.onsubmit=e=>{
+e.preventDefault();
+if(!name.value||!email.value||!message.value) return alert('Fill all fields');
+window.open(`https://wa.me/966530356000?text=Name:${name.value}%0AEmail:${email.value}%0AMessage:${message.value}`);
+};
+</script>
 
 </body>
-
 </html>
