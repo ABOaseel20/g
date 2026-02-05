@@ -3,40 +3,45 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Jeddah</title>
+    <title>Madinah</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         #lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, .85);
+            background: rgba(0, 0, 0, 0.85);
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1000
+            z-index: 1000;
         }
-        
+
         #lightbox img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 12px
+            border-radius: 12px;
         }
     </style>
 </head>
 
 <body class="bg-[#3b2f2f] text-white">
 
-    <header class="bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] p-5 text-center text-xl font-bold">
-        Jeddah – Saudi Arabia
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] p-5 text-center text-xl font-bold text-black">
+        Madinah – Saudi Arabia
     </header>
 
+    <!-- CONTENT -->
     <section class="max-w-6xl mx-auto p-6 text-center">
         <p class="text-lg mb-6">
-            Jeddah is the gateway to the Red Sea, famous for beaches and history.
+            Madinah is one of the holiest cities in Islam, known for its spiritual atmosphere,
+            Islamic heritage, and historical landmarks.
         </p>
 
+        <!-- GALLERY -->
         <div class="grid md:grid-cols-3 gap-6">
             <img src="madina1.jpg" onclick="openImg(this.src)" class="rounded-xl h-56 w-full object-cover cursor-pointer">
             <img src="madina2.jpg" onclick="openImg(this.src)" class="rounded-xl h-56 w-full object-cover cursor-pointer">
@@ -44,13 +49,15 @@
             <img src="madina4.jpg" onclick="openImg(this.src)" class="rounded-xl h-56 w-full object-cover cursor-pointer">
             <img src="madina8.jpg" onclick="openImg(this.src)" class="rounded-xl h-56 w-full object-cover cursor-pointer">
             <img src="madina9.jpg" onclick="openImg(this.src)" class="rounded-xl h-56 w-full object-cover cursor-pointer">
-
-
         </div>
 
-        <a href="index.html" class="block mt-8 text-[#d4af37] underline">← Back Home</a>
+        <!-- BACK -->
+        <a href="index.html" class="block mt-8 text-[#d4af37] underline text-lg">
+            ← Back Home
+        </a>
     </section>
 
+    <!-- LIGHTBOX -->
     <div id="lightbox" onclick="this.style.display='none'">
         <img id="lightboxImg">
     </div>
@@ -63,10 +70,4 @@
     </script>
 
 </body>
-
-</html>
-
-</html>
-
-
 </html>
