@@ -34,8 +34,7 @@ body{font-family:Arial}
 <a href="#home">Home</a>
 <a href="#cities">Cities</a>
 <a href="#contact">Contact</a>
-<button onclick="toggleAdmin()"
-class="bg-black/20 px-3 py-1 rounded">
+<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">
 Admin
 </button>
 </nav>
@@ -164,7 +163,7 @@ Chat on WhatsApp
 
 <!-- ADMIN PANEL -->
 <div id="admin"
-class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
 
 <div class="bg-[#4a362a] p-6 rounded-xl w-full max-w-md">
 
@@ -195,7 +194,6 @@ Close
 </div>
 </div>
 
-<!-- JS -->
 <script>
 
 let slides=document.querySelectorAll('.slide'),i=0;
@@ -206,17 +204,17 @@ slides[i].classList.add('active');
 },4000);
 
 function toggleMenu(){
-menu.classList.toggle('hidden');
+document.getElementById("menu").classList.toggle("hidden");
 }
 
 function toggleAdmin(){
-admin.classList.toggle('hidden');
+document.getElementById("admin").classList.toggle("hidden");
 }
 
 function addImage(){
 
-const files = imgFile.files;
-const city = adminCity.value;
+const files = document.getElementById("imgFile").files;
+const city = document.getElementById("adminCity").value;
 
 if(files.length===0) return alert("Choose images");
 
@@ -225,20 +223,16 @@ let data = JSON.parse(localStorage.getItem("cities")) || {};
 if(!data[city]) data[city] = [];
 
 Array.from(files).forEach(file=>{
-
 const reader = new FileReader();
-
 reader.onload = function(e){
 data[city].push(e.target.result);
 localStorage.setItem("cities", JSON.stringify(data));
 loadCity(city);
 };
-
 reader.readAsDataURL(file);
-
 });
 
-imgFile.value="";
+document.getElementById("imgFile").value="";
 alert("Uploaded ✔");
 }
 
