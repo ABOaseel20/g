@@ -13,8 +13,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 body{font-family:Arial}
 .slide{position:absolute;inset:0;opacity:0;transition:1s}
 .slide.active{opacity:1}
-.card img{transition:.4s}
-.card:hover img{transform:scale(1.05)}
+.card img{transition:.3s}
+.card img:hover{transform:scale(1.05)}
 #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);
 display:none;align-items:center;justify-content:center;z-index:1000}
 #lightbox img{max-width:90%;max-height:90%;border-radius:12px}
@@ -33,7 +33,9 @@ display:none;align-items:center;justify-content:center;z-index:1000}
 <a href="#home">Home</a>
 <a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
-<button onclick="openAdmin()" class="bg-black/20 px-3 py-1 rounded">Admin</button>
+<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">
+Admin
+</button>
 </nav>
 
 <button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
@@ -43,7 +45,7 @@ display:none;align-items:center;justify-content:center;z-index:1000}
 <a href="#home" class="block py-2">Home</a>
 <a href="#gallery" class="block py-2">Gallery</a>
 <a href="#contact" class="block py-2">Contact</a>
-<button onclick="openAdmin()" class="block py-2">Admin</button>
+<button onclick="toggleAdmin()" class="block py-2">Admin</button>
 </div>
 </header>
 
@@ -118,28 +120,16 @@ Send via WhatsApp
 </footer>
 
 <!-- ================= LIGHTBOX ================= -->
-<div id="lightbox" onclick="this.style.display='none'">
+<div id="lightbox" onclick="this.style.display='none'" class="flex">
 <img id="lightboxImg">
 </div>
 
-<!-- ================= ADMIN LOGIN ================= -->
-<div id="loginModal"
-class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-<div class="bg-[#4a362a] p-6 rounded-xl w-full max-w-sm text-center">
-<h3 class="text-xl font-bold text-[#d4af37] mb-4">Admin Login</h3>
-<input id="adminPass" type="password" placeholder="Enter Password"
-class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
-<button onclick="checkPass()"
-class="w-full bg-[#d4af37] text-black py-2 rounded">Login</button>
-</div>
-</div>
-
 <!-- ================= ADMIN PANEL ================= -->
-<div id="adminPanel"
+<div id="admin"
 class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
 <div class="bg-[#4a362a] p-6 rounded-xl w-full max-w-md">
 <h3 class="text-xl font-bold text-[#d4af37] mb-4 text-center">
-Admin – Upload Image
+Upload Images (JPG / PNG)
 </h3>
 
 <select id="adminCity"
@@ -153,15 +143,17 @@ class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
 <option value="asir">Asir</option>
 </select>
 
-<input type="file" id="imgFile" accept="image/*"
+<input type="file" id="imgFile"
+accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+multiple
 class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
 
 <button onclick="addImage()"
 class="w-full bg-[#d4af37] text-black py-2 rounded font-bold">
-Upload
+Upload Images
 </button>
 
-<button onclick="closeAdmin()"
+<button onclick="toggleAdmin()"
 class="w-full mt-3 bg-black/30 py-2 rounded">
 Close
 </button>
@@ -169,7 +161,7 @@ Close
 </div>
 
 <script>
-// ================= Slider =================
+// slider
 let slides=document.querySelectorAll('.slide'),i=0;
 setInterval(()=>{
 slides[i].classList.remove('active');
@@ -177,37 +169,37 @@ i=(i+1)%slides.length;
 slides[i].classList.add('active');
 },4000);
 
-// ================= Mobile =================
-function toggleMenu(){menu.classList.toggle('hidden');}
+// toggle
+function toggleMenu(){menu.classList.toggle('hidden')}
+function toggleAdmin(){admin.classList.toggle('hidden')}
 
-// ================= Admin Auth =================
-function openAdmin(){loginModal.classList.remove('hidden');}
-function checkPass(){
-if(adminPass.value==="1234"){
-loginModal.classList.add('hidden');
-adminPanel.classList.remove('hidden');
-}else alert("Wrong Password");
-}
-function closeAdmin(){adminPanel.classList.add('hidden');}
-
-// ================= Upload Image =================
+// upload multiple JPG/PNG
 function addImage(){
-const file=imgFile.files[0];
+const files=imgFile.files;
 const city=adminCity.value;
-if(!file)return alert("Choose image");
-const reader=new FileReader();
-reader.onload=e=>{
+if(files.length===0)return alert("Choose images");
+
 let data=JSON.parse(localStorage.getItem('cities'))||{};
 if(!data[city])data[city]=[];
+
+Array.from(files).forEach(file=>{
+if(!file.type.includes("jpeg") && !file.type.includes("png")){
+alert("Only JPG and PNG allowed");
+return;
+}
+const reader=new FileReader();
+reader.onload=e=>{
 data[city].push(e.target.result);
 localStorage.setItem('cities',JSON.stringify(data));
 loadCity();
-alert("Image Uploaded ✔");
 };
 reader.readAsDataURL(file);
+});
+alert("Images Uploaded ✔");
+imgFile.value="";
 }
 
-// ================= Load Gallery =================
+// load
 function loadCity(){
 const city=citySelect.value;
 const data=JSON.parse(localStorage.getItem('cities'))||{};
@@ -215,16 +207,17 @@ galleryGrid.innerHTML="";
 (data[city]||[]).forEach((img,index)=>{
 galleryGrid.innerHTML+=`
 <div class="card bg-[#4a362a] rounded-xl overflow-hidden relative">
-<img src="${img}" class="h-56 w-full object-cover cursor-pointer"
+<img src="${img}" class="h-56 w-full object-cover"
 onclick="openImg('${img}')">
 <button onclick="deleteImg('${city}',${index})"
-class="absolute top-2 right-2 bg-red-600 text-white px-2 rounded">X</button>
+class="absolute top-2 right-2 bg-red-600 text-white px-2 rounded">
+X</button>
 </div>`;
 });
 }
 loadCity();
 
-// ================= Delete =================
+// delete
 function deleteImg(city,index){
 let data=JSON.parse(localStorage.getItem('cities'));
 data[city].splice(index,1);
@@ -232,13 +225,13 @@ localStorage.setItem('cities',JSON.stringify(data));
 loadCity();
 }
 
-// ================= Lightbox =================
+// lightbox
 function openImg(src){
 lightbox.style.display='flex';
 lightboxImg.src=src;
 }
 
-// ================= WhatsApp =================
+// whatsapp
 contactForm.onsubmit=e=>{
 e.preventDefault();
 window.open(`https://wa.me/966530356000?text=Name:${name.value}%0AEmail:${email.value}%0AMessage:${message.value}`);
