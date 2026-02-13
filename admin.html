@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#3b2f2f] text-white p-6">
+
+<h1 class="text-2xl text-[#d4af37] font-bold mb-6">Add Images to City</h1>
+
+<select id="city" class="w-full p-3 mb-4 text-black rounded">
+<option value="jeddah">Jeddah</option>
+<option value="alula">AlUla</option>
+<option value="riyadh">Riyadh</option>
+<option value="taif">Taif</option>
+<option value="tabuk">Tabuk</option>
+<option value="madinah">Madinah</option>
+<option value="asir">Asir</option>
+</select>
+
+<input type="file" id="images" multiple class="mb-4">
+
+<button onclick="saveImages()" class="bg-[#d4af37] text-black px-6 py-3 rounded font-bold">
+Save Images
+</button>
+
+<script>
+function saveImages() {
+  const city = citySelect.value;
+  const files = images.files;
+  let data = JSON.parse(localStorage.getItem(city)) || [];
+
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      data.push(e.target.result);
+      localStorage.setItem(city, JSON.stringify(data));
+    };
+    reader.readAsDataURL(file);
+  });
+
+  alert('Images saved successfully ✅');
+}
+</script>
+
+</body>
+</html>
