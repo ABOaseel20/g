@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
 html{scroll-behavior:smooth}
@@ -27,20 +29,28 @@ body{font-family:Arial}
 <header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 <h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
+
 <nav class="space-x-6 font-semibold text-black hidden md:flex items-center">
 <a href="#home">Home</a>
 <a href="#cities">Cities</a>
 <a href="#contact">Contact</a>
-<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">Admin</button>
+
+<button onclick="loginAdmin()"
+class="bg-black/20 px-3 py-1 rounded flex items-center gap-2">
+<i class="fa-solid fa-user-shield"></i> Admin
+</button>
 </nav>
-<button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
+
+<button onclick="toggleMenu()" class="md:hidden text-black text-xl">
+<i class="fa-solid fa-bars"></i>
+</button>
 </div>
 
 <div id="menu" class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
 <a href="#home" class="block py-2">Home</a>
 <a href="#cities" class="block py-2">Cities</a>
 <a href="#contact" class="block py-2">Contact</a>
-<button onclick="toggleAdmin()" class="block py-2">Admin</button>
+<button onclick="loginAdmin()" class="block py-2">Admin</button>
 </div>
 </header>
 
@@ -55,10 +65,25 @@ body{font-family:Arial}
 <img src="Tabuk.jpg" class="slide object-cover w-full h-full">
 <img src="madina.jpg" class="slide object-cover w-full h-full">
 <img src="asir.jpg" class="slide object-cover w-full h-full">
+
 <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
-<h2 class="text-4xl font-bold text-[#d4af37]">Discover Saudi Arabia</h2>
+<h2 class="text-4xl font-bold text-[#d4af37] text-center">
+Discover Saudi Arabia
+</h2>
 </div>
 </section>
+
+<script>
+const cities = [
+{ id:"jeddah", name:"Jeddah", img:"jeddah.jpg", desc:"Red Sea beaches and historic Al-Balad."},
+{ id:"alula", name:"AlUla", img:"Aloula.jpg", desc:"Ancient heritage and rock formations."},
+{ id:"riyadh", name:"Riyadh", img:"riyad.jpg", desc:"Modern capital city."},
+{ id:"taif", name:"Taif", img:"taif.jpg", desc:"Mountain city famous for roses."},
+{ id:"tabuk", name:"Tabuk", img:"Tabuk.jpg", desc:"Beautiful deserts and mountains."},
+{ id:"madinah", name:"Madinah", img:"madina.jpg", desc:"Spiritual Islamic city."},
+{ id:"asir", name:"Asir", img:"asir.jpg", desc:"Green mountains and cool climate."}
+];
+</script>
 
 <!-- CITIES -->
 <section id="cities" class="max-w-7xl mx-auto py-16 px-6">
@@ -73,20 +98,6 @@ function explore(city){
 document.getElementById(city+"Section")
 .scrollIntoView({behavior:"smooth"});
 }
-</script>
-
-<!-- CITY CARD TEMPLATE -->
-
-<script>
-const cities = [
-{ id:"jeddah", name:"Jeddah", img:"jeddah.jpg", desc:"Red Sea beaches and historic Al-Balad."},
-{ id:"alula", name:"AlUla", img:"Aloula.jpg", desc:"Ancient heritage and stunning rock formations."},
-{ id:"riyadh", name:"Riyadh", img:"riyad.jpg", desc:"Modern capital city of Saudi Arabia."},
-{ id:"taif", name:"Taif", img:"taif.jpg", desc:"Mountain city famous for roses."},
-{ id:"tabuk", name:"Tabuk", img:"Tabuk.jpg", desc:"Beautiful deserts and mountains."},
-{ id:"madinah", name:"Madinah", img:"madina.jpg", desc:"Spiritual city with deep Islamic history."},
-{ id:"asir", name:"Asir", img:"asir.jpg", desc:"Green mountains and cool climate."}
-];
 
 document.write(
 cities.map(c=>`
@@ -123,17 +134,35 @@ class="grid md:grid-cols-3 gap-6 mb-10"></div>
 `).join("")
 );
 </script>
-
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-16 bg-[#2b1f1a] text-center">
 <h2 class="text-3xl font-bold text-[#d4af37] mb-6">Contact Us</h2>
+
 <a href="https://wa.me/966530356000"
 class="bg-green-500 px-8 py-3 rounded-full font-bold text-white">
+<i class="fab fa-whatsapp mr-2"></i>
 Chat on WhatsApp
 </a>
 </section>
+
+<!-- FOOTER -->
+<footer class="bg-[#1f1511] py-6 text-center">
+<p class="mb-4">© 2026 Saudi Tourism</p>
+<div class="flex justify-center gap-6 text-2xl">
+<a href="https://wa.me/966530356000" class="text-green-500"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-facebook"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-instagram"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-x-twitter"></i></a>
+</div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/966530356000"
+class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full text-2xl shadow-lg">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <!-- ADMIN PANEL -->
 <div id="admin"
@@ -166,6 +195,14 @@ Close
 </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div id="lightbox"
+class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50"
+onclick="closeLightbox()">
+<img id="lightboxImg"
+class="max-w-[90%] max-h-[90%] rounded-xl">
+</div>
+
 <script>
 
 let slides=document.querySelectorAll('.slide'),i=0;
@@ -183,10 +220,18 @@ function toggleAdmin(){
 document.getElementById("admin").classList.toggle("hidden");
 }
 
+function loginAdmin(){
+let pass = prompt("Enter Admin Password:");
+if(pass==="1234"){
+toggleAdmin();
+}else{
+alert("Wrong Password");
+}
+}
+
 function addImage(){
 const files = document.getElementById("imgFile").files;
 const city = document.getElementById("adminCity").value;
-
 if(files.length===0) return alert("Choose images");
 
 let data = JSON.parse(localStorage.getItem("cities")) || {};
@@ -201,7 +246,6 @@ loadCity(city);
 };
 reader.readAsDataURL(file);
 });
-
 document.getElementById("imgFile").value="";
 alert("Uploaded ✔");
 }
@@ -213,9 +257,36 @@ if(!gallery) return;
 gallery.innerHTML="";
 (data[city]||[]).forEach(img=>{
 gallery.innerHTML+=`
-<img src="${img}" class="h-56 w-full object-cover rounded-xl">
+<div class="relative group">
+<img src="${img}"
+onclick="openLightbox('${img}')"
+class="h-56 w-full object-cover rounded-xl cursor-pointer">
+
+<button onclick="deleteImage('${city}','${img}')"
+class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded hidden group-hover:block">
+<i class="fa-solid fa-trash"></i>
+</button>
+</div>
 `;
 });
+}
+
+function deleteImage(city,img){
+let data = JSON.parse(localStorage.getItem("cities")) || {};
+data[city] = data[city].filter(i=>i!==img);
+localStorage.setItem("cities", JSON.stringify(data));
+loadCity(city);
+}
+
+function openLightbox(src){
+document.getElementById("lightboxImg").src = src;
+document.getElementById("lightbox").classList.remove("hidden");
+document.getElementById("lightbox").classList.add("flex");
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").classList.add("hidden");
+document.getElementById("lightbox").classList.remove("flex");
 }
 
 cities.forEach(c=>loadCity(c.id));
