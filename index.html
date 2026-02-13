@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Saudi Arabia Tourism</title>
+<title>Saudi Tourism</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -13,205 +13,57 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 body{font-family:Arial}
 .slide{position:absolute;inset:0;opacity:0;transition:1s}
 .slide.active{opacity:1}
-.header-scrolled{background:#3b2f2f!important;transition:.4s}
-.card{transition:.3s}
-.card:hover{transform:translateY(-6px)}
-.card img{transition:.3s}
-.card:hover img{transform:scale(1.05)}
 </style>
 </head>
 
 <body class="bg-[#3b2f2f] text-white">
 
 <!-- HEADER -->
-<header id="mainHeader"
-class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
-
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<header class="bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] p-4 flex justify-between items-center">
 
 <h1 class="text-black font-bold text-lg">
-🌴 Saudi Arabia Tourism
+🌴 Saudi Tourism
 </h1>
 
-<nav class="hidden md:flex gap-8 font-semibold text-black items-center">
-<a href="#home"><i class="fa-solid fa-house mr-1"></i> Home</a>
-<a href="#cities"><i class="fa-solid fa-location-dot mr-1"></i> Destinations</a>
-<a href="#contact"><i class="fa-solid fa-envelope mr-1"></i> Contact</a>
-
 <button onclick="openAdmin()"
-class="bg-black/20 px-3 py-1 rounded flex items-center gap-2">
-<i class="fa-solid fa-user-shield"></i> Admin
-</button>
-</nav>
-
-<button onclick="toggleMenu()" class="md:hidden text-black text-xl">
-<i class="fa-solid fa-bars"></i>
+class="bg-black/20 px-3 py-1 rounded text-black">
+Admin
 </button>
 
-</div>
-
-<div id="mobileMenu"
-class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
-
-<a href="#home" class="block py-2">Home</a>
-<a href="#cities" class="block py-2">Destinations</a>
-<a href="#contact" class="block py-2">Contact</a>
-<button onclick="openAdmin()" class="block py-2">Admin</button>
-
-</div>
 </header>
 
-<div class="h-20"></div>
-
-<!-- SLIDER -->
-<section id="home" class="relative h-[70vh] overflow-hidden">
-
-<img src="jeddah.jpg" class="slide active w-full h-full object-cover">
-<img src="riyad.jpg" class="slide w-full h-full object-cover">
-<img src="Aloula.jpg" class="slide w-full h-full object-cover">
-<img src="Tabuk.jpg" class="slide w-full h-full object-cover">
-<img src="madina.jpg" class="slide w-full h-full object-cover">
-<img src="taif.jpg" class="slide w-full h-full object-cover">
-<img src="asir.jpg" class="slide w-full h-full object-cover">
-
-<div class="absolute inset-0 bg-black/60 flex items-center justify-center">
-<h2 class="text-4xl text-[#d4af37] font-bold">
-Discover Saudi Arabia
-</h2>
-</div>
-
-</section>
-
 <!-- CITIES -->
-<section id="cities" class="max-w-7xl mx-auto py-16 px-6">
+<section class="max-w-6xl mx-auto py-12 px-6">
 
-<h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
-Top Tourist Cities
+<h2 class="text-3xl text-[#d4af37] mb-8 text-center font-bold">
+Cities
 </h2>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+<div class="grid md:grid-cols-3 gap-6">
 
-<!-- JEDDAH -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="jeddah.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Jeddah</h3>
-<p class="text-gray-300 mb-4">Red Sea beaches.</p>
-<button onclick="showGallery('jeddah')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
-
-<!-- RIYADH -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="riyad.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Riyadh</h3>
-<p class="text-gray-300 mb-4">Modern capital.</p>
-<button onclick="showGallery('riyadh')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
-
-<!-- ALULA -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="Aloula.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">AlUla</h3>
-<p class="text-gray-300 mb-4">Ancient heritage.</p>
-<button onclick="showGallery('alula')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
-
-<!-- TABUK -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="Tabuk.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Tabuk</h3>
-<p class="text-gray-300 mb-4">Desert landscapes.</p>
-<button onclick="showGallery('tabuk')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
-
-<!-- MADINAH -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="madina.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Madinah</h3>
-<p class="text-gray-300 mb-4">Spiritual city.</p>
-<button onclick="showGallery('madinah')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
-
-<!-- TAIF -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="taif.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Taif</h3>
-<p class="text-gray-300 mb-4">Rose city.</p>
-<button onclick="showGallery('taif')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
-
-<!-- ASIR -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="asir.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Asir</h3>
-<p class="text-gray-300 mb-4">Green mountains.</p>
-<button onclick="showGallery('asir')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
-</div>
-</div>
+<button onclick="showGallery('jeddah')" class="bg-[#4a362a] p-6 rounded">Jeddah</button>
+<button onclick="showGallery('riyadh')" class="bg-[#4a362a] p-6 rounded">Riyadh</button>
+<button onclick="showGallery('tabuk')" class="bg-[#4a362a] p-6 rounded">Tabuk</button>
 
 </div>
+
 </section>
 
 <!-- GALLERY -->
-<section class="max-w-7xl mx-auto py-16 px-6">
-<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">
-City Gallery
+<section class="max-w-6xl mx-auto px-6 pb-20">
+<h2 class="text-2xl text-[#d4af37] mb-4 font-bold">
+Gallery
 </h2>
 <div id="gallery" class="grid md:grid-cols-3 gap-6"></div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-16 bg-[#2b1f1a] text-center">
-<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">
-Contact Us
-</h2>
-
-<a href="https://wa.me/966530356000"
-class="bg-green-500 px-8 py-3 rounded-full font-bold">
-<i class="fab fa-whatsapp mr-2"></i> WhatsApp
-</a>
-</section>
-
 <!-- ADMIN PANEL -->
-<div id="admin"
-class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+<div id="adminPanel"
+class="fixed inset-0 bg-black/80 hidden items-center justify-center">
 
-<div class="bg-[#4a362a] p-6 rounded-xl w-80">
+<div class="bg-[#4a362a] p-6 rounded w-80">
 
-<h3 class="text-center text-[#d4af37] mb-4 font-bold">
+<h3 class="text-[#d4af37] text-center mb-4 font-bold">
 Upload Images
 </h3>
 
@@ -219,16 +71,17 @@ Upload Images
 class="w-full p-2 mb-3 bg-[#3b2f2f] rounded">
 <option value="jeddah">Jeddah</option>
 <option value="riyadh">Riyadh</option>
-<option value="alula">AlUla</option>
 <option value="tabuk">Tabuk</option>
-<option value="madinah">Madinah</option>
-<option value="taif">Taif</option>
-<option value="asir">Asir</option>
 </select>
 
-<input type="file" id="imageInput" multiple class="w-full mb-3">
+<input type="file"
+id="imageInput"
+multiple
+accept="image/png, image/jpeg"
+class="w-full mb-3">
 
-<button onclick="uploadImages()"
+<button type="button"
+onclick="uploadImages()"
 class="w-full bg-[#d4af37] text-black py-2 rounded">
 Upload
 </button>
@@ -243,48 +96,112 @@ Close
 
 <script>
 
-/* SLIDER */
-let slides=document.querySelectorAll('.slide'),i=0;
-setInterval(()=>{
-slides[i].classList.remove('active');
-i=(i+1)%slides.length;
-slides[i].classList.add('active');
-},4000);
-
-/* HEADER SCROLL */
-window.addEventListener("scroll",function(){
-let header=document.getElementById("mainHeader");
-if(window.scrollY>50){
-header.classList.add("header-scrolled");
-}else{
-header.classList.remove("header-scrolled");
-}
-});
-
-/* MOBILE */
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-
-/* ADMIN */
+/* OPEN ADMIN */
 function openAdmin(){
-let pass=prompt("Password:");
-if(pass==="1234"){
-document.getElementById("admin").classList.remove("hidden");
-document.getElementById("admin").classList.add("flex");
+let pass = prompt("Enter password:");
+if(pass === "1234"){
+document.getElementById("adminPanel").classList.remove("hidden");
+document.getElementById("adminPanel").classList.add("flex");
 }else{
 alert("Wrong password");
 }
 }
 
+/* CLOSE ADMIN */
 function closeAdmin(){
-document.getElementById("admin").classList.add("hidden");
+document.getElementById("adminPanel").classList.add("hidden");
 }
 
-/* GALLERY */
+/* UPLOAD IMAGES */
+function uploadImages(){
+
+let city = document.getElementById("citySelect").value;
+let files = document.getElementById("imageInput").files;
+
+if(files.length === 0){
+alert("Please select images");
+return;
+}
+
+let data = JSON.parse(localStorage.getItem("images")) || {};
+
+if(!data[city]){
+data[city] = [];
+}
+
+let loaded = 0;
+
+Array.from(files).forEach(file=>{
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+data[city].push(e.target.result);
+loaded++;
+
+if(loaded === files.length){
+localStorage.setItem("images", JSON.stringify(data));
+alert("Images uploaded ✔");
+showGallery(city);
+}
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+document.getElementById("imageInput").value = "";
+
+}
+
+/* SHOW GALLERY */
 function showGallery(city){
-let gallery=document.getElementById("gallery");
-gallery.innerHTML="<h3 class='col-span-3 text-xl mb-4'>"+city+"</h3>";
+
+let data = JSON.parse(localStorage.getItem("images")) || {};
+let gallery = document.getElementById("gallery");
+
+gallery.innerHTML = "";
+
+if(!data[city] || data[city].length === 0){
+gallery.innerHTML = "<p>No images yet.</p>";
+return;
+}
+
+data[city].forEach((img,index)=>{
+
+let div = document.createElement("div");
+div.className = "relative";
+
+let image = document.createElement("img");
+image.src = img;
+image.className = "w-full h-56 object-cover rounded";
+
+let del = document.createElement("button");
+del.innerHTML = "🗑";
+del.className = "absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded";
+del.onclick = function(){ deleteImage(city,index); };
+
+div.appendChild(image);
+div.appendChild(del);
+gallery.appendChild(div);
+
+});
+
+}
+
+/* DELETE IMAGE */
+function deleteImage(city,index){
+
+let data = JSON.parse(localStorage.getItem("images")) || {};
+
+data[city].splice(index,1);
+
+localStorage.setItem("images", JSON.stringify(data));
+
+showGallery(city);
+
 }
 
 </script>
