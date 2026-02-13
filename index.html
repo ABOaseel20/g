@@ -7,7 +7,6 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- ICONS -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -15,8 +14,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 body{font-family:Arial}
 .slide{position:absolute;inset:0;opacity:0;transition:1s}
 .slide.active{opacity:1}
-.card{transition:.3s}
-.card:hover{transform:translateY(-5px)}
+.card:hover{transform:translateY(-5px);transition:.3s}
 </style>
 </head>
 
@@ -26,18 +24,12 @@ body{font-family:Arial}
 <header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-<h1 class="text-black font-bold text-lg">🌴 Saudi Tourism</h1>
-
-<div class="hidden md:flex gap-6 items-center text-black font-semibold">
-<a href="#home">Home</a>
-<a href="#cities">Cities</a>
-<a href="#contact">Contact</a>
+<h1 class="text-black font-bold">🌴 Saudi Tourism</h1>
 
 <button onclick="openAdmin()"
-class="bg-black/20 px-3 py-1 rounded flex items-center gap-2">
+class="bg-black/20 px-3 py-1 rounded text-black flex items-center gap-2">
 <i class="fa-solid fa-user-shield"></i> Admin
 </button>
-</div>
 
 </div>
 </header>
@@ -45,67 +37,60 @@ class="bg-black/20 px-3 py-1 rounded flex items-center gap-2">
 <div class="h-20"></div>
 
 <!-- SLIDER -->
-<section id="home" class="relative h-[70vh] overflow-hidden">
+<section class="relative h-[60vh] overflow-hidden">
 <img src="jeddah.jpg" class="slide active w-full h-full object-cover">
 <img src="riyad.jpg" class="slide w-full h-full object-cover">
 <img src="Tabuk.jpg" class="slide w-full h-full object-cover">
+<img src="Aloula.jpg" class="slide w-full h-full object-cover">
+<img src="madina.jpg" class="slide w-full h-full object-cover">
+<img src="asir.jpg" class="slide w-full h-full object-cover">
+
 <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
-<h2 class="text-4xl text-[#d4af37] font-bold">
-Discover Saudi Arabia
-</h2>
+<h2 class="text-4xl text-[#d4af37] font-bold">Discover Saudi Arabia</h2>
 </div>
 </section>
 
 <!-- CITIES -->
-<section id="cities" class="max-w-7xl mx-auto py-16 px-6">
-
+<section class="max-w-7xl mx-auto py-16 px-6">
 <h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
-Top Cities
+Cities
 </h2>
 
-<div class="grid md:grid-cols-3 gap-8">
+<div class="grid md:grid-cols-3 gap-6">
 
-<div class="card bg-[#4a362a] p-4 rounded-xl">
-<h3 class="text-xl font-bold">Jeddah</h3>
-<button onclick="showGallery('jeddah')"
+<script>
+const cities=[
+"jeddah","alula","riyadh","taif","tabuk","madinah","asir"
+];
+
+cities.forEach(city=>{
+document.write(`
+<div class="card bg-[#4a362a] p-6 rounded-xl text-center">
+<h3 class="text-xl font-bold capitalize">${city}</h3>
+<button onclick="showGallery('${city}')"
 class="bg-[#d4af37] text-black px-4 py-2 mt-4 rounded">
 Explore →
 </button>
 </div>
-
-<div class="card bg-[#4a362a] p-4 rounded-xl">
-<h3 class="text-xl font-bold">Riyadh</h3>
-<button onclick="showGallery('riyadh')"
-class="bg-[#d4af37] text-black px-4 py-2 mt-4 rounded">
-Explore →
-</button>
-</div>
-
-<div class="card bg-[#4a362a] p-4 rounded-xl">
-<h3 class="text-xl font-bold">Tabuk</h3>
-<button onclick="showGallery('tabuk')"
-class="bg-[#d4af37] text-black px-4 py-2 mt-4 rounded">
-Explore →
-</button>
-</div>
+`);
+});
+</script>
 
 </div>
 </section>
 
-<!-- GALLERY SECTION -->
-<section class="max-w-7xl mx-auto py-10 px-6">
-<h2 class="text-2xl text-[#d4af37] mb-6">City Gallery</h2>
+<!-- GALLERY -->
+<section class="max-w-7xl mx-auto px-6 pb-20">
+<h2 class="text-2xl text-[#d4af37] mb-6 font-bold">Gallery</h2>
 <div id="gallery" class="grid md:grid-cols-3 gap-6"></div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-16 text-center bg-[#2b1f1a]">
-<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">Contact Us</h2>
-
+<section class="py-16 bg-[#2b1f1a] text-center">
+<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">Contact</h2>
 <a href="https://wa.me/966530356000"
 class="bg-green-500 px-8 py-3 rounded-full font-bold">
-<i class="fab fa-whatsapp mr-2"></i>
-WhatsApp
+<i class="fab fa-whatsapp mr-2"></i> WhatsApp
 </a>
 </section>
 
@@ -117,6 +102,12 @@ WhatsApp
 <i class="fab fa-x-twitter text-[#d4af37]"></i>
 </div>
 </footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/966530356000"
+class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full text-2xl shadow-lg">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <!-- ADMIN PANEL -->
 <div id="admin"
@@ -131,12 +122,15 @@ Upload Images
 <select id="citySelect"
 class="w-full p-2 mb-3 bg-[#3b2f2f] rounded">
 <option value="jeddah">Jeddah</option>
+<option value="alula">AlUla</option>
 <option value="riyadh">Riyadh</option>
+<option value="taif">Taif</option>
 <option value="tabuk">Tabuk</option>
+<option value="madinah">Madinah</option>
+<option value="asir">Asir</option>
 </select>
 
-<input type="file" id="imageInput" multiple
-class="w-full mb-3">
+<input type="file" id="imageInput" multiple class="w-full mb-3">
 
 <button onclick="uploadImages()"
 class="w-full bg-[#d4af37] text-black py-2 rounded">
@@ -165,8 +159,9 @@ slides[i].classList.add('active');
 function openAdmin(){
 let pass=prompt("Password:");
 if(pass==="1234"){
-document.getElementById("admin").classList.remove("hidden");
-document.getElementById("admin").classList.add("flex");
+let admin=document.getElementById("admin");
+admin.classList.remove("hidden");
+admin.classList.add("flex");
 }else{
 alert("Wrong password");
 }
@@ -207,12 +202,36 @@ let data=JSON.parse(localStorage.getItem("images"))||{};
 let gallery=document.getElementById("gallery");
 gallery.innerHTML="";
 
-(data[city]||[]).forEach(img=>{
+(data[city]||[]).forEach((img,index)=>{
 gallery.innerHTML+=`
+<div class="relative group">
 <img src="${img}"
-class="w-full h-56 object-cover rounded-xl">
+onclick="openLightbox('${img}')"
+class="w-full h-56 object-cover rounded-xl cursor-pointer">
+<button onclick="deleteImage('${city}',${index})"
+class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded hidden group-hover:block">
+🗑
+</button>
+</div>
 `;
 });
+}
+
+/* DELETE */
+function deleteImage(city,index){
+let data=JSON.parse(localStorage.getItem("images"))||{};
+data[city].splice(index,1);
+localStorage.setItem("images",JSON.stringify(data));
+showGallery(city);
+}
+
+/* LIGHTBOX */
+function openLightbox(src){
+let box=document.createElement("div");
+box.className="fixed inset-0 bg-black/90 flex items-center justify-center z-50";
+box.innerHTML=`<img src="${src}" class="max-w-[90%] max-h-[90%] rounded-xl">`;
+box.onclick=()=>box.remove();
+document.body.appendChild(box);
 }
 
 </script>
