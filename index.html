@@ -21,14 +21,32 @@ body{font-family:Arial}
 
 <!-- HEADER -->
 <header class="bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] p-4 flex justify-between items-center">
-<h1 class="text-black font-bold text-lg">
+
+<h1 class="text-black font-bold text-lg flex items-center gap-2">
 <i class="fa-solid fa-earth-asia"></i> Saudi Tourism
 </h1>
 
+<nav class="flex gap-6 text-black font-semibold items-center">
+
+<a href="#" class="flex items-center gap-1">
+<i class="fa-solid fa-house"></i> Home
+</a>
+
+<a href="#" class="flex items-center gap-1">
+<i class="fa-solid fa-location-dot"></i> Destinations
+</a>
+
+<a href="#" class="flex items-center gap-1">
+<i class="fa-solid fa-envelope"></i> Contact
+</a>
+
 <button onclick="openAdmin()"
-class="bg-black/20 px-3 py-1 rounded text-black">
+class="bg-black/20 px-3 py-1 rounded flex items-center gap-1">
 <i class="fa-solid fa-user-shield"></i> Admin
 </button>
+
+</nav>
+
 </header>
 
 <!-- CITIES -->
@@ -95,7 +113,7 @@ class="w-full p-2 mb-3 bg-[#3b2f2f] rounded">
 <input type="file"
 id="imageInput"
 multiple
-accept="image/png, image/jpeg"
+accept="image/png,image/jpeg"
 class="w-full mb-3 bg-white text-black p-1">
 
 <button type="button"
@@ -104,7 +122,8 @@ class="w-full bg-[#d4af37] text-black py-2 rounded">
 Upload
 </button>
 
-<button onclick="closeAdmin()"
+<button type="button"
+onclick="closeAdmin()"
 class="w-full mt-3 bg-gray-700 py-2 rounded">
 Close
 </button>
@@ -114,7 +133,7 @@ Close
 
 <script>
 
-/* ADMIN OPEN */
+/* OPEN ADMIN */
 function openAdmin(){
 let pass = prompt("Enter password:");
 if(pass === "1234"){
@@ -125,21 +144,21 @@ alert("Wrong password");
 }
 }
 
-/* CLOSE */
+/* CLOSE ADMIN */
 function closeAdmin(){
 document.getElementById("adminPanel").classList.add("hidden");
 }
 
-/* WAIT UNTIL PAGE LOADS */
-window.onload = function(){
+/* WAIT UNTIL PAGE LOAD */
+window.addEventListener("load", function(){
 
 document.getElementById("uploadBtn").addEventListener("click", function(){
 
-let city = document.getElementById("citySelect").value;
 let input = document.getElementById("imageInput");
+let city = document.getElementById("citySelect").value;
 
-if(!input.files || input.files.length === 0){
-alert("No file selected ❌");
+if(input.files.length === 0){
+alert("Please select images ❌");
 return;
 }
 
@@ -150,21 +169,23 @@ data[city] = [];
 }
 
 let total = input.files.length;
-let done = 0;
+let finished = 0;
 
 Array.from(input.files).forEach(function(file){
 
 let reader = new FileReader();
 
 reader.onload = function(e){
-data[city].push(e.target.result);
-done++;
 
-if(done === total){
+data[city].push(e.target.result);
+finished++;
+
+if(finished === total){
 localStorage.setItem("images", JSON.stringify(data));
 alert("Images Uploaded ✔");
 showGallery(city);
 }
+
 };
 
 reader.readAsDataURL(file);
@@ -175,7 +196,7 @@ input.value = "";
 
 });
 
-};
+});
 
 /* SHOW GALLERY */
 function showGallery(city){
@@ -216,12 +237,10 @@ gallery.appendChild(div);
 
 /* DELETE */
 function deleteImage(city,index){
-
 let data = JSON.parse(localStorage.getItem("images")) || {};
 data[city].splice(index,1);
 localStorage.setItem("images", JSON.stringify(data));
 showGallery(city);
-
 }
 
 </script>
