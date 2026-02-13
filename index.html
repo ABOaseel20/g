@@ -6,26 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
 body{font-family:Arial}
-
-/* SLIDER */
 .slide{position:absolute;inset:0;opacity:0;transition:1s}
 .slide.active{opacity:1}
-
-/* HEADER SCROLL EFFECT */
-.header-scrolled{
-background:#3b2f2f !important;
-transition:.4s;
-}
-
-/* CARD EFFECT */
+.header-scrolled{background:#3b2f2f!important;transition:.4s}
 .card{transition:.3s}
-.card:hover{transform:translateY(-8px)}
+.card:hover{transform:translateY(-6px)}
 .card img{transition:.3s}
 .card:hover img{transform:scale(1.05)}
 </style>
@@ -35,55 +25,40 @@ transition:.4s;
 
 <!-- HEADER -->
 <header id="mainHeader"
-class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow-lg">
+class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
 
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-<h1 class="text-black font-bold text-lg flex items-center gap-2">
+<h1 class="text-black font-bold text-lg">
 🌴 Saudi Arabia Tourism
 </h1>
 
-<nav class="hidden md:flex items-center gap-8 font-semibold text-black">
+<nav class="hidden md:flex gap-8 font-semibold text-black items-center">
+<a href="#home"><i class="fa-solid fa-house mr-1"></i> Home</a>
+<a href="#cities"><i class="fa-solid fa-location-dot mr-1"></i> Destinations</a>
+<a href="#contact"><i class="fa-solid fa-envelope mr-1"></i> Contact</a>
 
-<a href="#home" class="hover:text-white transition">
-<i class="fa-solid fa-house mr-1"></i> Home
-</a>
-
-<a href="#cities" class="hover:text-white transition">
-<i class="fa-solid fa-location-dot mr-1"></i> Destinations
-</a>
-
-<a href="#contact" class="hover:text-white transition">
-<i class="fa-solid fa-envelope mr-1"></i> Contact
-</a>
-
+<button onclick="openAdmin()"
+class="bg-black/20 px-3 py-1 rounded flex items-center gap-2">
+<i class="fa-solid fa-user-shield"></i> Admin
+</button>
 </nav>
 
-<button onclick="toggleMenu()" 
-class="md:hidden text-black text-2xl">
+<button onclick="toggleMenu()" class="md:hidden text-black text-xl">
 <i class="fa-solid fa-bars"></i>
 </button>
 
 </div>
 
-<!-- MOBILE MENU -->
-<div id="mobileMenu" 
-class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden font-semibold">
+<div id="mobileMenu"
+class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
 
-<a href="#home" class="block py-2">
-<i class="fa-solid fa-house mr-1"></i> Home
-</a>
-
-<a href="#cities" class="block py-2">
-<i class="fa-solid fa-location-dot mr-1"></i> Destinations
-</a>
-
-<a href="#contact" class="block py-2">
-<i class="fa-solid fa-envelope mr-1"></i> Contact
-</a>
+<a href="#home" class="block py-2">Home</a>
+<a href="#cities" class="block py-2">Destinations</a>
+<a href="#contact" class="block py-2">Contact</a>
+<button onclick="openAdmin()" class="block py-2">Admin</button>
 
 </div>
-
 </header>
 
 <div class="h-20"></div>
@@ -99,9 +74,9 @@ class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden font-semibold">
 <img src="taif.jpg" class="slide w-full h-full object-cover">
 <img src="asir.jpg" class="slide w-full h-full object-cover">
 
-<div class="absolute inset-0 bg-black/60 flex items-center justify-center text-center">
-<h2 class="text-4xl md:text-5xl font-bold text-[#d4af37]">
-Discover the Beauty of Saudi Arabia
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+<h2 class="text-4xl text-[#d4af37] font-bold">
+Discover Saudi Arabia
 </h2>
 </div>
 
@@ -121,7 +96,11 @@ Top Tourist Cities
 <img src="jeddah.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Jeddah</h3>
-<p class="text-gray-300 mb-4">Red Sea beaches & historic Al-Balad.</p>
+<p class="text-gray-300 mb-4">Red Sea beaches.</p>
+<button onclick="showGallery('jeddah')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
@@ -130,7 +109,11 @@ Top Tourist Cities
 <img src="riyad.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Riyadh</h3>
-<p class="text-gray-300 mb-4">Modern capital & vibrant city life.</p>
+<p class="text-gray-300 mb-4">Modern capital.</p>
+<button onclick="showGallery('riyadh')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
@@ -139,7 +122,11 @@ Top Tourist Cities
 <img src="Aloula.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">AlUla</h3>
-<p class="text-gray-300 mb-4">Ancient heritage & rock formations.</p>
+<p class="text-gray-300 mb-4">Ancient heritage.</p>
+<button onclick="showGallery('alula')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
@@ -148,7 +135,11 @@ Top Tourist Cities
 <img src="Tabuk.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Tabuk</h3>
-<p class="text-gray-300 mb-4">Deserts & dramatic landscapes.</p>
+<p class="text-gray-300 mb-4">Desert landscapes.</p>
+<button onclick="showGallery('tabuk')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
@@ -157,7 +148,11 @@ Top Tourist Cities
 <img src="madina.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Madinah</h3>
-<p class="text-gray-300 mb-4">Spiritual Islamic heritage.</p>
+<p class="text-gray-300 mb-4">Spiritual city.</p>
+<button onclick="showGallery('madinah')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
@@ -166,7 +161,11 @@ Top Tourist Cities
 <img src="taif.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Taif</h3>
-<p class="text-gray-300 mb-4">Mountain city & rose gardens.</p>
+<p class="text-gray-300 mb-4">Rose city.</p>
+<button onclick="showGallery('taif')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
@@ -175,11 +174,23 @@ Top Tourist Cities
 <img src="asir.jpg" class="h-56 w-full object-cover">
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Asir</h3>
-<p class="text-gray-300 mb-4">Green mountains & cool weather.</p>
+<p class="text-gray-300 mb-4">Green mountains.</p>
+<button onclick="showGallery('asir')"
+class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
+Explore →
+</button>
 </div>
 </div>
 
 </div>
+</section>
+
+<!-- GALLERY -->
+<section class="max-w-7xl mx-auto py-16 px-6">
+<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">
+City Gallery
+</h2>
+<div id="gallery" class="grid md:grid-cols-3 gap-6"></div>
 </section>
 
 <!-- CONTACT -->
@@ -189,26 +200,46 @@ Contact Us
 </h2>
 
 <a href="https://wa.me/966530356000"
-class="bg-green-500 px-8 py-3 rounded-full font-bold hover:scale-105 transition">
+class="bg-green-500 px-8 py-3 rounded-full font-bold">
 <i class="fab fa-whatsapp mr-2"></i> WhatsApp
 </a>
-
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-[#1f1511] py-6 text-center">
-<div class="flex justify-center gap-6 text-2xl">
-<i class="fab fa-facebook text-[#d4af37] hover:scale-110 transition"></i>
-<i class="fab fa-instagram text-[#d4af37] hover:scale-110 transition"></i>
-<i class="fab fa-x-twitter text-[#d4af37] hover:scale-110 transition"></i>
-</div>
-</footer>
+<!-- ADMIN PANEL -->
+<div id="admin"
+class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/966530356000"
-class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full text-2xl shadow-lg hover:scale-110 transition">
-<i class="fab fa-whatsapp"></i>
-</a>
+<div class="bg-[#4a362a] p-6 rounded-xl w-80">
+
+<h3 class="text-center text-[#d4af37] mb-4 font-bold">
+Upload Images
+</h3>
+
+<select id="citySelect"
+class="w-full p-2 mb-3 bg-[#3b2f2f] rounded">
+<option value="jeddah">Jeddah</option>
+<option value="riyadh">Riyadh</option>
+<option value="alula">AlUla</option>
+<option value="tabuk">Tabuk</option>
+<option value="madinah">Madinah</option>
+<option value="taif">Taif</option>
+<option value="asir">Asir</option>
+</select>
+
+<input type="file" id="imageInput" multiple class="w-full mb-3">
+
+<button onclick="uploadImages()"
+class="w-full bg-[#d4af37] text-black py-2 rounded">
+Upload
+</button>
+
+<button onclick="closeAdmin()"
+class="w-full mt-3 bg-gray-700 py-2 rounded">
+Close
+</button>
+
+</div>
+</div>
 
 <script>
 
@@ -220,12 +251,7 @@ i=(i+1)%slides.length;
 slides[i].classList.add('active');
 },4000);
 
-/* MOBILE MENU */
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-
-/* HEADER SCROLL EFFECT */
+/* HEADER SCROLL */
 window.addEventListener("scroll",function(){
 let header=document.getElementById("mainHeader");
 if(window.scrollY>50){
@@ -234,6 +260,32 @@ header.classList.add("header-scrolled");
 header.classList.remove("header-scrolled");
 }
 });
+
+/* MOBILE */
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+
+/* ADMIN */
+function openAdmin(){
+let pass=prompt("Password:");
+if(pass==="1234"){
+document.getElementById("admin").classList.remove("hidden");
+document.getElementById("admin").classList.add("flex");
+}else{
+alert("Wrong password");
+}
+}
+
+function closeAdmin(){
+document.getElementById("admin").classList.add("hidden");
+}
+
+/* GALLERY */
+function showGallery(city){
+let gallery=document.getElementById("gallery");
+gallery.innerHTML="<h3 class='col-span-3 text-xl mb-4'>"+city+"</h3>";
+}
 
 </script>
 
