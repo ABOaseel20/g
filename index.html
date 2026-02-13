@@ -5,15 +5,19 @@
 <title>Saudi Arabia Tourism</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
 body{font-family:Arial}
 .slide{position:absolute;inset:0;opacity:0;transition:1s}
 .slide.active{opacity:1}
 .card img{transition:.4s}
-.card:hover img{transform:scale(1.08)}
+.card:hover img{transform:scale(1.05)}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);
+display:none;align-items:center;justify-content:center;z-index:1000}
+#lightbox img{max-width:90%;max-height:90%;border-radius:12px}
 </style>
 </head>
 
@@ -21,38 +25,41 @@ body{font-family:Arial}
 
 <!-- ================= HEADER ================= -->
 <header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-    <nav class="hidden md:flex space-x-6 font-semibold text-black">
-      <a href="#home">Home</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#adminBtn">Admin</a>
-    </nav>
+<h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
 
-    <!-- Mobile button -->
-    <button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
-  </div>
+<nav class="hidden md:flex space-x-6 font-semibold text-black items-center">
+<a href="#home">Home</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+<button onclick="openAdmin()" class="bg-black/20 px-3 py-1 rounded">Admin</button>
+</nav>
 
-  <!-- Mobile menu -->
-  <div id="menu" class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
-    <a href="#home" class="block py-2">Home</a>
-    <a href="#gallery" class="block py-2">Gallery</a>
-    <a href="#adminBtn" class="block py-2">Admin</a>
-  </div>
+<button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
+</div>
+
+<div id="menu" class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
+<a href="#home" class="block py-2">Home</a>
+<a href="#gallery" class="block py-2">Gallery</a>
+<a href="#contact" class="block py-2">Contact</a>
+<button onclick="openAdmin()" class="block py-2">Admin</button>
+</div>
 </header>
 
 <div class="h-20"></div>
 
 <!-- ================= SLIDER ================= -->
 <section id="home" class="relative h-[70vh] overflow-hidden">
-  <img src="jeddah.jpg" class="slide active object-cover w-full h-full">
-  <img src="asir.jpg" class="slide object-cover w-full h-full">
-  <img src="riyad.jpg" class="slide object-cover w-full h-full">
+<img src="jeddah.jpg" class="slide active object-cover w-full h-full">
+<img src="asir.jpg" class="slide object-cover w-full h-full">
+<img src="riyadh.jpg" class="slide object-cover w-full h-full">
 
-  <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-    <h2 class="text-4xl font-bold text-[#d4af37]">Explore Saudi Arabia</h2>
-  </div>
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+<h2 class="text-4xl font-bold text-[#d4af37] text-center">
+Discover Saudi Arabia
+</h2>
+</div>
 </section>
 
 <!-- ================= GALLERY ================= -->
@@ -61,7 +68,6 @@ body{font-family:Arial}
 Tourist Gallery
 </h2>
 
-<!-- City Filter -->
 <div class="flex justify-center mb-8">
 <select id="citySelect" onchange="loadCity()"
 class="p-3 rounded bg-[#4a362a] border border-[#d4af37]">
@@ -76,26 +82,64 @@ class="p-3 rounded bg-[#4a362a] border border-[#d4af37]">
 </div>
 
 <div id="galleryGrid"
-class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-<!-- Images load here -->
-</div>
+class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 </section>
 
-<!-- ================= ADMIN BUTTON ================= -->
-<div id="adminBtn" class="text-center mb-16">
-<button onclick="toggleAdmin()"
-class="bg-[#d4af37] text-black px-6 py-3 rounded-xl font-bold">
-Open Admin Panel
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-16 max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-[#d4af37] mb-8">
+Contact Us
+</h2>
+
+<form id="contactForm"
+class="bg-[#4a362a] p-8 rounded-2xl space-y-4">
+<input id="name" placeholder="Name"
+class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
+<input id="email" placeholder="Email"
+class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
+<textarea id="message" placeholder="Your Message"
+class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]"></textarea>
+<button class="w-full bg-[#d4af37] text-black py-3 rounded-xl font-bold">
+Send via WhatsApp
 </button>
+</form>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#1f1511] py-6 text-center">
+<p>© 2026 Saudi Tourism</p>
+<div class="flex justify-center gap-6 mt-4 text-2xl">
+<a href="https://wa.me/966530356000" class="text-green-500">
+<i class="fab fa-whatsapp"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-facebook"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-instagram"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-x-twitter"></i></a>
+</div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div id="lightbox" onclick="this.style.display='none'">
+<img id="lightboxImg">
+</div>
+
+<!-- ================= ADMIN LOGIN ================= -->
+<div id="loginModal"
+class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+<div class="bg-[#4a362a] p-6 rounded-xl w-full max-w-sm text-center">
+<h3 class="text-xl font-bold text-[#d4af37] mb-4">Admin Login</h3>
+<input id="adminPass" type="password" placeholder="Enter Password"
+class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
+<button onclick="checkPass()"
+class="w-full bg-[#d4af37] text-black py-2 rounded">Login</button>
+</div>
 </div>
 
 <!-- ================= ADMIN PANEL ================= -->
-<div id="admin"
+<div id="adminPanel"
 class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-
 <div class="bg-[#4a362a] p-6 rounded-xl w-full max-w-md">
 <h3 class="text-xl font-bold text-[#d4af37] mb-4 text-center">
-Admin – Add Image
+Admin – Upload Image
 </h3>
 
 <select id="adminCity"
@@ -114,21 +158,18 @@ class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
 
 <button onclick="addImage()"
 class="w-full bg-[#d4af37] text-black py-2 rounded font-bold">
-Upload Image
+Upload
 </button>
 
-<button onclick="toggleAdmin()"
+<button onclick="closeAdmin()"
 class="w-full mt-3 bg-black/30 py-2 rounded">
 Close
 </button>
-
-<p id="msg" class="text-green-400 text-center mt-3"></p>
 </div>
 </div>
 
-<!-- ================= JS ================= -->
 <script>
-// slider
+// ================= Slider =================
 let slides=document.querySelectorAll('.slide'),i=0;
 setInterval(()=>{
 slides[i].classList.remove('active');
@@ -136,49 +177,72 @@ i=(i+1)%slides.length;
 slides[i].classList.add('active');
 },4000);
 
-// mobile menu
-function toggleMenu(){
-menu.classList.toggle('hidden');
-}
+// ================= Mobile =================
+function toggleMenu(){menu.classList.toggle('hidden');}
 
-// admin toggle
-function toggleAdmin(){
-admin.classList.toggle('hidden');
+// ================= Admin Auth =================
+function openAdmin(){loginModal.classList.remove('hidden');}
+function checkPass(){
+if(adminPass.value==="1234"){
+loginModal.classList.add('hidden');
+adminPanel.classList.remove('hidden');
+}else alert("Wrong Password");
 }
+function closeAdmin(){adminPanel.classList.add('hidden');}
 
-// add image
+// ================= Upload Image =================
 function addImage(){
 const file=imgFile.files[0];
 const city=adminCity.value;
-if(!file) return alert("Choose image");
-
+if(!file)return alert("Choose image");
 const reader=new FileReader();
 reader.onload=e=>{
 let data=JSON.parse(localStorage.getItem('cities'))||{};
-if(!data[city]) data[city]=[];
+if(!data[city])data[city]=[];
 data[city].push(e.target.result);
 localStorage.setItem('cities',JSON.stringify(data));
-msg.innerText="Image added successfully ✔";
-imgFile.value="";
 loadCity();
+alert("Image Uploaded ✔");
 };
 reader.readAsDataURL(file);
 }
 
-// load city images
+// ================= Load Gallery =================
 function loadCity(){
 const city=citySelect.value;
 const data=JSON.parse(localStorage.getItem('cities'))||{};
 galleryGrid.innerHTML="";
-(data[city]||[]).forEach(img=>{
+(data[city]||[]).forEach((img,index)=>{
 galleryGrid.innerHTML+=`
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="${img}" class="h-56 w-full object-cover">
+<div class="card bg-[#4a362a] rounded-xl overflow-hidden relative">
+<img src="${img}" class="h-56 w-full object-cover cursor-pointer"
+onclick="openImg('${img}')">
+<button onclick="deleteImg('${city}',${index})"
+class="absolute top-2 right-2 bg-red-600 text-white px-2 rounded">X</button>
 </div>`;
 });
 }
-
 loadCity();
+
+// ================= Delete =================
+function deleteImg(city,index){
+let data=JSON.parse(localStorage.getItem('cities'));
+data[city].splice(index,1);
+localStorage.setItem('cities',JSON.stringify(data));
+loadCity();
+}
+
+// ================= Lightbox =================
+function openImg(src){
+lightbox.style.display='flex';
+lightboxImg.src=src;
+}
+
+// ================= WhatsApp =================
+contactForm.onsubmit=e=>{
+e.preventDefault();
+window.open(`https://wa.me/966530356000?text=Name:${name.value}%0AEmail:${email.value}%0AMessage:${message.value}`);
+};
 </script>
 
 </body>
