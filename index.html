@@ -6,8 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
 html{scroll-behavior:smooth}
@@ -29,16 +27,12 @@ body{font-family:Arial}
 <header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 <h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
-
 <nav class="space-x-6 font-semibold text-black hidden md:flex items-center">
 <a href="#home">Home</a>
 <a href="#cities">Cities</a>
 <a href="#contact">Contact</a>
-<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">
-Admin
-</button>
+<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">Admin</button>
 </nav>
-
 <button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
 </div>
 
@@ -57,14 +51,12 @@ Admin
 <img src="jeddah.jpg" class="slide active object-cover w-full h-full">
 <img src="Aloula.jpg" class="slide object-cover w-full h-full">
 <img src="riyad.jpg" class="slide object-cover w-full h-full">
+<img src="taif.jpg" class="slide object-cover w-full h-full">
 <img src="Tabuk.jpg" class="slide object-cover w-full h-full">
 <img src="madina.jpg" class="slide object-cover w-full h-full">
 <img src="asir.jpg" class="slide object-cover w-full h-full">
-
-<div class="absolute inset-0 bg-black/60 flex items-center justify-center text-center">
-<h2 class="text-4xl font-bold text-[#d4af37]">
-Discover Saudi Arabia
-</h2>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+<h2 class="text-4xl font-bold text-[#d4af37]">Discover Saudi Arabia</h2>
 </div>
 </section>
 
@@ -83,78 +75,60 @@ document.getElementById(city+"Section")
 }
 </script>
 
-<!-- Jeddah -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="jeddah.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Jeddah</h3>
-<p class="text-sm text-gray-300 mb-4">
-Red Sea beaches and historic Al-Balad.
-</p>
-<button onclick="explore('jeddah')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore More →
-</button>
-</div>
-</div>
+<!-- CITY CARD TEMPLATE -->
 
-<!-- Riyadh -->
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="riyad.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">Riyadh</h3>
-<p class="text-sm text-gray-300 mb-4">
-Modern capital city of Saudi Arabia.
-</p>
-<button onclick="explore('riyadh')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore More →
-</button>
-</div>
-</div>
+<script>
+const cities = [
+{ id:"jeddah", name:"Jeddah", img:"jeddah.jpg", desc:"Red Sea beaches and historic Al-Balad."},
+{ id:"alula", name:"AlUla", img:"Aloula.jpg", desc:"Ancient heritage and stunning rock formations."},
+{ id:"riyadh", name:"Riyadh", img:"riyad.jpg", desc:"Modern capital city of Saudi Arabia."},
+{ id:"taif", name:"Taif", img:"taif.jpg", desc:"Mountain city famous for roses."},
+{ id:"tabuk", name:"Tabuk", img:"Tabuk.jpg", desc:"Beautiful deserts and mountains."},
+{ id:"madinah", name:"Madinah", img:"madina.jpg", desc:"Spiritual city with deep Islamic history."},
+{ id:"asir", name:"Asir", img:"asir.jpg", desc:"Green mountains and cool climate."}
+];
 
-<!-- Tabuk -->
+document.write(
+cities.map(c=>`
 <div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="Tabuk.jpg" class="h-56 w-full object-cover">
+<img src="${c.img}" class="h-56 w-full object-cover">
 <div class="p-5">
-<h3 class="text-xl font-bold mb-2">Tabuk</h3>
-<p class="text-sm text-gray-300 mb-4">
-Beautiful deserts and mountains.
-</p>
-<button onclick="explore('tabuk')"
+<h3 class="text-xl font-bold mb-2">${c.name}</h3>
+<p class="text-sm text-gray-300 mb-4">${c.desc}</p>
+<button onclick="explore('${c.id}')"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
 Explore More →
 </button>
 </div>
 </div>
+`).join("")
+);
+</script>
 
 </div>
 </section>
 
 <!-- GALLERIES -->
 <section class="max-w-7xl mx-auto py-16 px-6">
-
 <h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
 City Galleries
 </h2>
 
-<h3 id="jeddahSection" class="text-xl mb-4">Jeddah</h3>
-<div id="jeddahGallery" class="grid md:grid-cols-3 gap-6 mb-10"></div>
-
-<h3 id="riyadhSection" class="text-xl mb-4">Riyadh</h3>
-<div id="riyadhGallery" class="grid md:grid-cols-3 gap-6 mb-10"></div>
-
-<h3 id="tabukSection" class="text-xl mb-4">Tabuk</h3>
-<div id="tabukGallery" class="grid md:grid-cols-3 gap-6"></div>
+<script>
+document.write(
+cities.map(c=>`
+<h3 id="${c.id}Section" class="text-xl mb-4">${c.name}</h3>
+<div id="${c.id}Gallery"
+class="grid md:grid-cols-3 gap-6 mb-10"></div>
+`).join("")
+);
+</script>
 
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-16 bg-[#2b1f1a] text-center">
-<h2 class="text-3xl font-bold text-[#d4af37] mb-6">
-Contact Us
-</h2>
-
+<h2 class="text-3xl font-bold text-[#d4af37] mb-6">Contact Us</h2>
 <a href="https://wa.me/966530356000"
 class="bg-green-500 px-8 py-3 rounded-full font-bold text-white">
 Chat on WhatsApp
@@ -173,9 +147,7 @@ Admin Panel
 
 <select id="adminCity"
 class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
-<option value="jeddah">Jeddah</option>
-<option value="riyadh">Riyadh</option>
-<option value="tabuk">Tabuk</option>
+${cities.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")}
 </select>
 
 <input type="file" id="imgFile" multiple
@@ -212,14 +184,12 @@ document.getElementById("admin").classList.toggle("hidden");
 }
 
 function addImage(){
-
 const files = document.getElementById("imgFile").files;
 const city = document.getElementById("adminCity").value;
 
 if(files.length===0) return alert("Choose images");
 
 let data = JSON.parse(localStorage.getItem("cities")) || {};
-
 if(!data[city]) data[city] = [];
 
 Array.from(files).forEach(file=>{
@@ -248,7 +218,7 @@ gallery.innerHTML+=`
 });
 }
 
-["jeddah","riyadh","tabuk"].forEach(city=>loadCity(city));
+cities.forEach(c=>loadCity(c.id));
 
 </script>
 
