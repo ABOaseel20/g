@@ -20,11 +20,6 @@ body{font-family:Arial}
 .card:hover{transform:translateY(-8px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .card img{transition:.4s}
 .card:hover img{transform:scale(1.07)}
-
-#lightbox{
-position:fixed;inset:0;background:rgba(0,0,0,.9);
-display:none;align-items:center;justify-content:center;z-index:1000}
-#lightbox img{max-width:90%;max-height:90%;border-radius:12px}
 </style>
 </head>
 
@@ -38,11 +33,7 @@ display:none;align-items:center;justify-content:center;z-index:1000}
 <nav class="hidden md:flex space-x-6 font-semibold text-black items-center">
 <a href="#home">Home</a>
 <a href="#cities">Cities</a>
-<a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
-<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">
-Admin
-</button>
 </nav>
 
 <button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
@@ -51,15 +42,13 @@ Admin
 <div id="menu" class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
 <a href="#home" class="block py-2">Home</a>
 <a href="#cities" class="block py-2">Cities</a>
-<a href="#gallery" class="block py-2">Gallery</a>
 <a href="#contact" class="block py-2">Contact</a>
-<button onclick="toggleAdmin()" class="block py-2">Admin</button>
 </div>
 </header>
 
 <div class="h-20"></div>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section id="home" class="relative h-[70vh] overflow-hidden">
 <img src="jeddah.jpg" class="slide active object-cover w-full h-full">
 <img src="Aloula.jpg" class="slide object-cover w-full h-full">
@@ -83,14 +72,6 @@ Top Tourist Cities
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-<script>
-function explore(city){
-citySelect.value = city;
-loadCity();
-location.href = "#gallery";
-}
-</script>
-
 <!-- Jeddah -->
 <div class="card bg-[#4a362a] rounded-xl overflow-hidden">
 <img src="jeddah.jpg" class="h-56 w-full object-cover">
@@ -99,10 +80,10 @@ location.href = "#gallery";
 <p class="text-sm text-gray-300 mb-4">
 The Bride of the Red Sea, famous for beaches and Al-Balad.
 </p>
-<button onclick="explore('jeddah')"
+<a href="jeddah.html"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full font-semibold">
 Explore More →
-</button>
+</a>
 </div>
 </div>
 
@@ -114,10 +95,10 @@ Explore More →
 <p class="text-sm text-gray-300 mb-4">
 Ancient rock formations and UNESCO heritage sites.
 </p>
-<button onclick="explore('alula')"
+<a href="alula.html"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full font-semibold">
 Explore More →
-</button>
+</a>
 </div>
 </div>
 
@@ -129,10 +110,10 @@ Explore More →
 <p class="text-sm text-gray-300 mb-4">
 Modern capital blending skyscrapers with heritage.
 </p>
-<button onclick="explore('riyadh')"
+<a href="riyadh.html"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full font-semibold">
 Explore More →
-</button>
+</a>
 </div>
 </div>
 
@@ -142,12 +123,12 @@ Explore More →
 <div class="p-5">
 <h3 class="text-xl font-bold mb-2">Tabuk</h3>
 <p class="text-sm text-gray-300 mb-4">
-Valleys, deserts and NEOM region.
+Valleys, deserts and stunning desert landscapes.
 </p>
-<button onclick="explore('tabuk')"
+<a href="tabuk.html"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full font-semibold">
 Explore More →
-</button>
+</a>
 </div>
 </div>
 
@@ -159,10 +140,10 @@ Explore More →
 <p class="text-sm text-gray-300 mb-4">
 Spiritual city with deep Islamic history.
 </p>
-<button onclick="explore('madinah')"
+<a href="madinah.html"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full font-semibold">
 Explore More →
-</button>
+</a>
 </div>
 </div>
 
@@ -174,36 +155,14 @@ Explore More →
 <p class="text-sm text-gray-300 mb-4">
 Green mountains and traditional villages.
 </p>
-<button onclick="explore('asir')"
+<a href="asir.html"
 class="bg-[#d4af37] text-black px-4 py-2 rounded-full font-semibold">
 Explore More →
-</button>
+</a>
 </div>
 </div>
 
 </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="max-w-7xl mx-auto py-16 px-6">
-<h2 class="text-3xl text-center text-[#d4af37] mb-8 font-bold">
-City Gallery
-</h2>
-
-<div class="flex justify-center mb-8">
-<select id="citySelect" onchange="loadCity()"
-class="p-3 rounded bg-[#4a362a] border border-[#d4af37]">
-<option value="jeddah">Jeddah</option>
-<option value="alula">AlUla</option>
-<option value="riyadh">Riyadh</option>
-<option value="tabuk">Tabuk</option>
-<option value="madinah">Madinah</option>
-<option value="asir">Asir</option>
-</select>
-</div>
-
-<div id="galleryGrid"
-class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 </section>
 
 <!-- CONTACT -->
@@ -211,51 +170,19 @@ class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 <h2 class="text-3xl font-bold text-[#d4af37] mb-6">
 Contact Us
 </h2>
+
 <a href="https://wa.me/966530356000"
 class="bg-green-500 px-8 py-3 rounded-full font-bold text-white hover:bg-green-600 transition">
 Chat on WhatsApp
 </a>
 </section>
 
-<!-- ADMIN PANEL -->
-<div id="admin"
-class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-<div class="bg-[#4a362a] p-6 rounded-xl w-full max-w-md">
-<h3 class="text-xl font-bold text-[#d4af37] mb-4 text-center">
-Upload Images
-</h3>
+<!-- FOOTER -->
+<footer class="bg-[#1f1511] py-6 text-center text-sm">
+© 2026 Saudi Tourism
+</footer>
 
-<select id="adminCity"
-class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
-<option value="jeddah">Jeddah</option>
-<option value="alula">AlUla</option>
-<option value="riyadh">Riyadh</option>
-<option value="tabuk">Tabuk</option>
-<option value="madinah">Madinah</option>
-<option value="asir">Asir</option>
-</select>
-
-<input type="file" id="imgFile"
-accept=".jpg,.jpeg,.png" multiple
-class="w-full p-3 mb-3 rounded bg-[#3b2f2f]">
-
-<button onclick="addImage()"
-class="w-full bg-[#d4af37] text-black py-2 rounded font-bold">
-Upload
-</button>
-
-<button onclick="toggleAdmin()"
-class="w-full mt-3 bg-black/30 py-2 rounded">
-Close
-</button>
-</div>
-</div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="this.style.display='none'" class="flex">
-<img id="lightboxImg">
-</div>
-
+<!-- JS -->
 <script>
 let slides=document.querySelectorAll('.slide'),i=0;
 setInterval(()=>{
@@ -264,57 +191,8 @@ i=(i+1)%slides.length;
 slides[i].classList.add('active');
 },4000);
 
-function toggleMenu(){menu.classList.toggle('hidden')}
-function toggleAdmin(){admin.classList.toggle('hidden')}
-
-function addImage(){
-const files=imgFile.files;
-const city=adminCity.value;
-if(files.length===0)return alert("Choose images");
-
-let data=JSON.parse(localStorage.getItem('cities'))||{};
-if(!data[city])data[city]=[];
-
-Array.from(files).forEach(file=>{
-const reader=new FileReader();
-reader.onload=e=>{
-data[city].push(e.target.result);
-localStorage.setItem('cities',JSON.stringify(data));
-loadCity();
-};
-reader.readAsDataURL(file);
-});
-alert("Uploaded ✔");
-imgFile.value="";
-}
-
-function loadCity(){
-const city=citySelect.value;
-const data=JSON.parse(localStorage.getItem('cities'))||{};
-galleryGrid.innerHTML="";
-(data[city]||[]).forEach((img,index)=>{
-galleryGrid.innerHTML+=`
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden relative">
-<img src="${img}" class="h-56 w-full object-cover"
-onclick="openImg('${img}')">
-<button onclick="deleteImg('${city}',${index})"
-class="absolute top-2 right-2 bg-red-600 text-white px-2 rounded">
-X</button>
-</div>`;
-});
-}
-loadCity();
-
-function deleteImg(city,index){
-let data=JSON.parse(localStorage.getItem('cities'));
-data[city].splice(index,1);
-localStorage.setItem('cities',JSON.stringify(data));
-loadCity();
-}
-
-function openImg(src){
-lightbox.style.display='flex';
-lightboxImg.src=src;
+function toggleMenu(){
+menu.classList.toggle('hidden');
 }
 </script>
 
