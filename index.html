@@ -10,14 +10,31 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
+html{scroll-behavior:smooth}
 body{font-family:Arial}
-.slide{position:absolute;inset:0;opacity:0;transition:1s}
+
+.slide{
+position:absolute;
+inset:0;
+opacity:0;
+transition:1s
+}
 .slide.active{opacity:1}
-.card img{transition:.3s}
-.card img:hover{transform:scale(1.05)}
-#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);
-display:none;align-items:center;justify-content:center;z-index:1000}
-#lightbox img{max-width:90%;max-height:90%;border-radius:12px}
+
+.card{
+transition:.4s
+}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 30px rgba(0,0,0,.4)
+}
+
+.card img{
+transition:.4s
+}
+.card:hover img{
+transform:scale(1.07)
+}
 </style>
 </head>
 
@@ -26,16 +43,13 @@ display:none;align-items:center;justify-content:center;z-index:1000}
 <!-- ================= HEADER ================= -->
 <header class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
 <h1 class="text-xl font-bold text-black">🌴 Saudi Arabia Tourism</h1>
 
-<nav class="hidden md:flex space-x-6 font-semibold text-black items-center">
+<nav class="hidden md:flex space-x-6 font-semibold text-black">
 <a href="#home">Home</a>
 <a href="#cities">Cities</a>
-<a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
-<button onclick="toggleAdmin()" class="bg-black/20 px-3 py-1 rounded">
-Admin
-</button>
 </nav>
 
 <button onclick="toggleMenu()" class="md:hidden text-black text-xl">☰</button>
@@ -44,118 +58,123 @@ Admin
 <div id="menu" class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
 <a href="#home" class="block py-2">Home</a>
 <a href="#cities" class="block py-2">Cities</a>
-<a href="#gallery" class="block py-2">Gallery</a>
 <a href="#contact" class="block py-2">Contact</a>
-<button onclick="toggleAdmin()" class="block py-2">Admin</button>
 </div>
 </header>
 
 <div class="h-20"></div>
 
-<!-- ================= SLIDER ================= -->
-<section id="home" class="relative h-[70vh] overflow-hidden">
-<img src="jeddah.jpg" class="slide active object-cover w-full h-full">
-<img src="asir.jpg" class="slide object-cover w-full h-full">
-<img src="riyadh.jpg" class="slide object-cover w-full h-full">
+<!-- ================= HERO ================= -->
+<section id="home" class="relative h-[80vh] overflow-hidden">
 
-<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-<h2 class="text-4xl font-bold text-[#d4af37] text-center">
+<img src="jeddah.jpg" class="slide active object-cover w-full h-full">
+<img src="riyadh.jpg" class="slide object-cover w-full h-full">
+<img src="asir.jpg" class="slide object-cover w-full h-full">
+
+<div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-6">
+<h2 class="text-5xl font-bold text-[#d4af37] mb-6">
 Discover the Beauty of Saudi Arabia
 </h2>
+
+<a href="#cities"
+class="bg-[#d4af37] text-black px-8 py-3 rounded-full font-bold hover:bg-[#c19a2e] transition">
+Explore Cities
+</a>
 </div>
 </section>
 
-<!-- ================= CITIES WITH TEXT ================= -->
-<section id="cities" class="max-w-7xl mx-auto py-16 px-6">
-<h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
+<!-- ================= CITIES ================= -->
+<section id="cities" class="max-w-7xl mx-auto py-20 px-6">
+<h2 class="text-4xl text-center text-[#d4af37] mb-16 font-bold">
 Top Tourist Cities
 </h2>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
 
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">Jeddah</h3>
-<p>The Bride of the Red Sea, famous for beaches, Corniche, and historic Al-Balad district.</p>
+<!-- Jeddah -->
+<div class="card bg-[#4a362a] rounded-2xl overflow-hidden">
+<img src="jeddah.jpg" class="h-56 w-full object-cover">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3">Jeddah</h3>
+<p class="text-gray-300 mb-4">
+The Bride of the Red Sea, famous for beaches,
+the Corniche, and historic Al-Balad district.
+</p>
+<a href="#"
+class="text-[#d4af37] font-semibold hover:underline">
+Explore More →
+</a>
+</div>
 </div>
 
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">AlUla</h3>
-<p>An open-air museum featuring ancient rock formations and the UNESCO site of Hegra.</p>
+<!-- Riyadh -->
+<div class="card bg-[#4a362a] rounded-2xl overflow-hidden">
+<img src="riyadh.jpg" class="h-56 w-full object-cover">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3">Riyadh</h3>
+<p class="text-gray-300 mb-4">
+The capital city blending modern skyscrapers
+with rich cultural heritage.
+</p>
+<a href="#"
+class="text-[#d4af37] font-semibold hover:underline">
+Explore More →
+</a>
+</div>
 </div>
 
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">Riyadh</h3>
-<p>The capital city blending modern skyscrapers with rich cultural heritage.</p>
+<!-- Asir -->
+<div class="card bg-[#4a362a] rounded-2xl overflow-hidden">
+<img src="asir.jpg" class="h-56 w-full object-cover">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3">Asir</h3>
+<p class="text-gray-300 mb-4">
+Famous for green mountains, cool weather,
+and traditional villages.
+</p>
+<a href="#"
+class="text-[#d4af37] font-semibold hover:underline">
+Explore More →
+</a>
 </div>
-
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">Taif</h3>
-<p>Known for its roses, cool climate, and stunning mountain landscapes.</p>
-</div>
-
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">Tabuk</h3>
-<p>Home to beautiful valleys, deserts, and futuristic NEOM region.</p>
-</div>
-
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">Madinah</h3>
-<p>A spiritual city with deep Islamic history and peaceful atmosphere.</p>
-</div>
-
-<div class="card bg-[#4a362a] rounded-xl p-6">
-<h3 class="text-xl font-bold mb-2">Asir</h3>
-<p>Famous for its green mountains, cool weather, and traditional villages.</p>
 </div>
 
 </div>
-</section>
-
-<!-- ================= GALLERY ================= -->
-<section id="gallery" class="max-w-7xl mx-auto py-16 px-6">
-<h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
-City Gallery
-</h2>
-
-<div class="flex justify-center mb-8">
-<select id="citySelect" onchange="loadCity()"
-class="p-3 rounded bg-[#4a362a] border border-[#d4af37]">
-<option value="jeddah">Jeddah</option>
-<option value="alula">AlUla</option>
-<option value="riyadh">Riyadh</option>
-<option value="taif">Taif</option>
-<option value="tabuk">Tabuk</option>
-<option value="madinah">Madinah</option>
-<option value="asir">Asir</option>
-</select>
-</div>
-
-<div id="galleryGrid"
-class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 </section>
 
 <!-- ================= CONTACT ================= -->
-<section id="contact" class="py-16 max-w-5xl mx-auto px-6">
-<h2 class="text-3xl font-bold text-center text-[#d4af37] mb-8">
+<section id="contact" class="py-20 bg-[#2b1f1a]">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<h2 class="text-4xl font-bold text-[#d4af37] mb-8">
 Contact Us
 </h2>
 
-<form id="contactForm"
-class="bg-[#4a362a] p-8 rounded-2xl space-y-4">
-<input id="name" placeholder="Name"
-class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
-<input id="email" placeholder="Email"
-class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]">
-<textarea id="message" placeholder="Your Message"
-class="w-full p-3 rounded bg-[#3b2f2f] border border-[#d4af37]"></textarea>
-<button class="w-full bg-[#d4af37] text-black py-3 rounded-xl font-bold">
-Send via WhatsApp
-</button>
-</form>
+<p class="mb-6 text-gray-300">
+Have questions about visiting Saudi Arabia?
+We’re here to help you.
+</p>
+
+<a href="https://wa.me/966530356000"
+class="bg-green-500 px-8 py-3 rounded-full font-bold text-white hover:bg-green-600 transition">
+Chat on WhatsApp
+</a>
+</div>
 </section>
 
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#1f1511] py-6 text-center">
+<p>© 2026 Saudi Tourism</p>
+<div class="flex justify-center gap-6 mt-4 text-2xl">
+<a href="#" class="text-[#d4af37]"><i class="fab fa-facebook"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-instagram"></i></a>
+<a href="#" class="text-[#d4af37]"><i class="fab fa-x-twitter"></i></a>
+<a href="https://wa.me/966530356000" class="text-green-500">
+<i class="fab fa-whatsapp"></i></a>
+</div>
+</footer>
+
 <script>
-// slider
+// Slider
 let slides=document.querySelectorAll('.slide'),i=0;
 setInterval(()=>{
 slides[i].classList.remove('active');
@@ -163,11 +182,9 @@ i=(i+1)%slides.length;
 slides[i].classList.add('active');
 },4000);
 
-// whatsapp
-contactForm.onsubmit=e=>{
-e.preventDefault();
-window.open(`https://wa.me/966530356000?text=Name:${name.value}%0AEmail:${email.value}%0AMessage:${message.value}`);
-};
+function toggleMenu(){
+menu.classList.toggle('hidden')
+}
 </script>
 
 </body>
