@@ -6,83 +6,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-body{font-family:Arial}
 .slide{position:absolute;inset:0;opacity:0;transition:1s}
 .slide.active{opacity:1}
-.card{transition:.3s}
-.card:hover{transform:translateY(-6px)}
 </style>
 </head>
 
 <body class="bg-[#3b2f2f] text-white">
 
-<!-- ================= HEADER ================= -->
-<header id="mainHeader"
-class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] shadow-lg">
+<!-- HEADER -->
+<header class="bg-gradient-to-r from-[#8b6b2e] to-[#d4af37] p-4 flex justify-between items-center">
 
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-<h1 class="text-black font-bold flex items-center gap-2">
-<i class="fa-solid fa-earth-asia"></i>
-Saudi Tourism
+<h1 class="text-black font-bold text-xl">
+<i class="fa-solid fa-earth-asia"></i> Saudi Arabia Tourism
 </h1>
 
-<nav class="hidden md:flex items-center gap-8 text-black font-semibold">
-
-<a href="#home"><i class="fa-solid fa-house mr-1"></i> Home</a>
-<a href="#cities"><i class="fa-solid fa-location-dot mr-1"></i> Destinations</a>
-<a href="#contact"><i class="fa-solid fa-envelope mr-1"></i> Contact</a>
-
-<button onclick="openAdmin()"
-class="bg-black/20 px-3 py-1 rounded">
-<i class="fa-solid fa-user-shield"></i> Admin
-</button>
-
-<div class="flex gap-4 text-xl">
-<i class="fab fa-facebook"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-x-twitter"></i>
-</div>
-
+<nav class="flex gap-6 text-black font-semibold">
+<a href="index.html">Home</a>
+<a href="#cities">Destinations</a>
+<a href="#contact">Contact</a>
 </nav>
-
-<button onclick="toggleMenu()" class="md:hidden text-black text-xl">
-<i class="fa-solid fa-bars"></i>
-</button>
-
-</div>
-
-<div id="mobileMenu"
-class="hidden bg-[#d4af37] text-black px-6 pb-4 md:hidden">
-
-<a href="#home" class="block py-2">Home</a>
-<a href="#cities" class="block py-2">Destinations</a>
-<a href="#contact" class="block py-2">Contact</a>
-<button onclick="openAdmin()" class="block py-2">Admin</button>
-
-</div>
 
 </header>
 
-<div class="h-20"></div>
-
-<!-- ================= SLIDER ================= -->
-<section id="home" class="relative h-[70vh] overflow-hidden">
+<!-- SLIDER -->
+<section class="relative h-[60vh] overflow-hidden">
 
 <img src="jeddah.jpg" class="slide active w-full h-full object-cover">
-<img src="riyadh.jpg" class="slide w-full h-full object-cover">
-<img src="alula.jpg" class="slide w-full h-full object-cover">
+<img src="riyad.jpg" class="slide w-full h-full object-cover">
+<img src="Aloula.jpg" class="slide w-full h-full object-cover">
 <img src="tabuk.jpg" class="slide w-full h-full object-cover">
 <img src="madinah.jpg" class="slide w-full h-full object-cover">
-<img src="taif.jpg" class="slide w-full h-full object-cover">
-<img src="asir.jpg" class="slide w-full h-full object-cover">
+  <img src="taif.jpg" class="slide w-full h-full object-cover">
+  <img src="asir.jpg" class="slide w-full h-full object-cover">
 
-<div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+
+
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
 <h2 class="text-4xl font-bold text-[#d4af37]">
 Discover Saudi Arabia
 </h2>
@@ -90,204 +53,106 @@ Discover Saudi Arabia
 
 </section>
 
-<!-- ================= CITIES ================= -->
+<!-- CITIES -->
 <section id="cities" class="max-w-7xl mx-auto py-16 px-6">
 
 <h2 class="text-3xl text-center text-[#d4af37] mb-10 font-bold">
 Top Tourist Cities
 </h2>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+<div class="grid md:grid-cols-3 gap-8">
 
-<!-- GENERATE CITY CARDS -->
-<script>
-let cityList = [
-"jeddah","riyadh","alula",
-"tabuk","madinah","taif","asir"
-];
+<a href="jeddah.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="jeddah.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">Jeddah</h3>
+</div>
+</a>
 
-cityList.forEach(function(city){
-document.write(`
-<div class="card bg-[#4a362a] rounded-xl overflow-hidden">
-<img src="${city}.jpg" class="h-56 w-full object-cover">
-<div class="p-5">
-<h3 class="text-xl font-bold mb-2">${city.charAt(0).toUpperCase()+city.slice(1)}</h3>
-<button onclick="showGallery('${city}')"
-class="bg-[#d4af37] text-black px-4 py-2 rounded-full">
-Explore →
-</button>
+<a href="riyadh.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="riyad.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">Riyadh</h3>
 </div>
+</a>
+
+<a href="alula.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="alula.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">AlUla</h3>
 </div>
-`);
-});
-</script>
+</a>
+
+<a href="tabuk.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="tabuk.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">Tabuk</h3>
+</div>
+</a>
+
+<a href="madinah.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="madinah.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">Madinah</h3>
+</div>
+</a>
+
+<a href="taif.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="taif.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">Taif</h3>
+</div>
+</a>
+
+<a href="asir.html" class="bg-[#4a362a] rounded-xl overflow-hidden hover:scale-105 transition">
+<img src="asir.jpg" class="h-56 w-full object-cover">
+<div class="p-5 text-center">
+<h3 class="text-xl font-bold">Asir</h3>
+</div>
+</a>
 
 </div>
 </section>
 
-<!-- ================= GALLERY ================= -->
-<section class="max-w-7xl mx-auto py-16 px-6">
+<!-- CONTACT -->
+<section id="contact" class="py-16 text-center bg-[#2b1f1a]">
 
-<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">
-City Gallery
-</h2>
-
-<div id="gallery"
-class="grid md:grid-cols-3 gap-6"></div>
-
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact"
-class="py-16 bg-[#2b1f1a] text-center">
-
-<h2 class="text-3xl text-[#d4af37] mb-6 font-bold">
+<h2 class="text-3xl font-bold text-[#d4af37] mb-6">
 Contact Us
 </h2>
 
 <a href="https://wa.me/966530356000"
-class="bg-green-500 px-8 py-3 rounded-full font-bold">
-<i class="fab fa-whatsapp mr-2"></i> WhatsApp
+class="bg-green-500 px-6 py-3 rounded font-bold">
+<i class="fab fa-whatsapp"></i> WhatsApp
 </a>
 
 </section>
 
-<!-- ================= ADMIN PANEL ================= -->
-<div id="adminPanel"
-class="fixed inset-0 bg-black/80 hidden items-center justify-center">
+<!-- FOOTER -->
+<footer class="bg-[#1f1511] py-6 text-center">
 
-<div class="bg-[#4a362a] p-6 rounded-xl w-80">
+<p class="mb-4 text-gray-400 text-sm">
+© 2026 Saudi Arabia Tourism
+</p>
 
-<h3 class="text-[#d4af37] text-center mb-4 font-bold">
-Upload Images
-</h3>
-
-<select id="citySelect"
-class="w-full p-2 mb-3 bg-[#3b2f2f] rounded">
-<option value="jeddah">Jeddah</option>
-<option value="riyadh">Riyadh</option>
-<option value="alula">AlUla</option>
-<option value="tabuk">Tabuk</option>
-<option value="madinah">Madinah</option>
-<option value="taif">Taif</option>
-<option value="asir">Asir</option>
-</select>
-
-<input type="file"
-id="imageInput"
-multiple
-accept="image/png,image/jpeg"
-class="w-full mb-3 bg-white text-black p-1">
-
-<button type="button"
-onclick="uploadImages()"
-class="w-full bg-[#d4af37] text-black py-2 rounded">
-Upload
-</button>
-
-<button onclick="closeAdmin()"
-class="w-full mt-3 bg-gray-700 py-2 rounded">
-Close
-</button>
-
-</div>
+<div class="flex justify-center gap-6 text-2xl">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-x-twitter"></i></a>
+<a href="https://wa.me/966530356000">
+<i class="fab fa-whatsapp"></i>
+</a>
 </div>
 
-<!-- ================= SCRIPT ================= -->
+</footer>
+
 <script>
-
-/* SLIDER */
 let slides=document.querySelectorAll('.slide'),i=0;
 setInterval(()=>{
 slides[i].classList.remove('active');
 i=(i+1)%slides.length;
 slides[i].classList.add('active');
 },4000);
-
-/* MENU */
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-
-/* ADMIN */
-function openAdmin(){
-let pass=prompt("Enter password:");
-if(pass==="1234"){
-document.getElementById("adminPanel").classList.remove("hidden");
-document.getElementById("adminPanel").classList.add("flex");
-}else{
-alert("Wrong password");
-}
-}
-function closeAdmin(){
-document.getElementById("adminPanel").classList.add("hidden");
-}
-
-/* UPLOAD */
-function uploadImages(){
-
-let city=document.getElementById("citySelect").value;
-let files=document.getElementById("imageInput").files;
-
-if(files.length===0){
-alert("Select images");
-return;
-}
-
-let data=JSON.parse(localStorage.getItem("images"))||{};
-if(!data[city]) data[city]=[];
-
-let loaded=0;
-
-Array.from(files).forEach(function(file){
-let reader=new FileReader();
-reader.onload=function(e){
-data[city].push(e.target.result);
-loaded++;
-if(loaded===files.length){
-localStorage.setItem("images",JSON.stringify(data));
-alert("Uploaded ✔");
-showGallery(city);
-}
-};
-reader.readAsDataURL(file);
-});
-
-}
-
-/* SHOW GALLERY */
-function showGallery(city){
-
-let data=JSON.parse(localStorage.getItem("images"))||{};
-let gallery=document.getElementById("gallery");
-gallery.innerHTML="";
-
-if(!data[city]){
-gallery.innerHTML="<p>No images yet.</p>";
-return;
-}
-
-data[city].forEach(function(img,index){
-gallery.innerHTML+=`
-<div class="relative">
-<img src="${img}" class="w-full h-56 object-cover rounded-xl">
-<button onclick="deleteImage('${city}',${index})"
-class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded">
-🗑
-</button>
-</div>
-`;
-});
-}
-
-/* DELETE */
-function deleteImage(city,index){
-let data=JSON.parse(localStorage.getItem("images"))||{};
-data[city].splice(index,1);
-localStorage.setItem("images",JSON.stringify(data));
-showGallery(city);
-}
-
 </script>
 
 </body>
